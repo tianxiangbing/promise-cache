@@ -1,5 +1,5 @@
 {
-  "name": "promiseCache",
+  "name": "x-promisecache",
   "version": "1.0.0",
   "description": "js promise-cache",
   "main": "index.js",
