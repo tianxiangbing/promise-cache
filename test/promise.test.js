@@ -2,11 +2,11 @@
  * @Descripttion: 
  * @Author: tianxiangbing
  * @Date: 2020-07-09 14:53:50
- * @LastEditTime: 2020-07-09 15:48:57
+ * @LastEditTime: 2020-07-09 16:50:22
  * @github: https://github.com/tianxiangbing
  */
 let PromiseCache = require('../src/index');
-let returnValue = ['a','b','c','d']
+let returnValue = ['a','b','c','d','e','f','g']
 let i  =0 ;
 let p = ()=> new Promise((resolve,reject)=>{
     setTimeout(()=>{
@@ -44,4 +44,18 @@ describe('test开始',()=>{
             })
         },1010)
     });
+    it('测试关键key为对象',done=>{
+        PromiseCache.cache({a:1,b:2},p).then(res=>{
+            expect(res).toBe('e');//仍然返回之前的值
+        })
+        PromiseCache.cache({a:1,b:2},p).then(res=>{
+            expect(res).toBe('e');//
+            expect(PromiseCache.list.length).toBe(2);
+        })
+        PromiseCache.cache({a:1,b:3},p).then(res=>{
+            expect(res).toBe('f');//
+            expect(PromiseCache.list.length).toBe(3);
+            done();
+        })
+    })
 });

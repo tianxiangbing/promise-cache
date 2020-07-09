@@ -6,7 +6,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * @Descripttion:
  * @Author: tianxiangbing
  * @Date: 2020-07-08 16:15:42
- * @LastEditTime: 2020-07-09 15:47:04
+ * @LastEditTime: 2020-07-09 16:49:24
  * @github: https://github.com/tianxiangbing
  */
 
@@ -80,7 +80,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       var expireTime = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
 
       var cache = this.get(key);
-      console.log(cache);
+      // console.log(cache)
       if (!cache) {
         //如果存在这个promise并没过期的话,不操作，如果不存在的话，添加缓存
         return this.set(key, promise, expireTime);
